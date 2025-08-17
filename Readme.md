@@ -71,10 +71,10 @@ Apply the `configmap.yaml` manifest to create a ConfigMap. This stores non-confi
 
 ```bash
 kubectl apply -f k8s/configmap.yaml
-kubectl get configmaps -n <your-namespace>
+kubectl get configmaps -n demo
 ```
 
-Remember to replace `<your-namespace>` with the name of the namespace you created.
+Remember to replace `demo` with the name of the namespace you created.
 
 ### 4\. Deploy Application
 

@@ -1,159 +1,85 @@
-# 🚀 Task 5 – Minikube & Kubernetes Deployment
+🚀 Task 5 – Minikube & Kubernetes Deployment
+This repository demonstrates Kubernetes fundamentals using Minikube. The goal of this task is to practice namespace creation, config management, deployments, scaling, and rollouts in a real Kubernetes environment.
 
-This repository demonstrates **Kubernetes fundamentals** using **Minikube**.  
-The goal of this task is to practice **namespace creation, config management, deployments, scaling, and rollouts** in a real Kubernetes environment.
-
----
-
-## 📂 Project Structure
-
-```
-
+📂 Project Structure
 task-5-minikube/
-├── README.md                # Documentation for this project
-└── k8s/                     # Kubernetes manifests
-├── namespace.yaml       # Defines a custom namespace
-├── configmap.yaml       # Stores application configuration
-├── deployment.yaml      # Deploys the app with replicas
-└── service.yaml         # Exposes the app as a service
+├── README.md                # Documentation for this project
+└── k8s/                     # Kubernetes manifests
+├── namespace.yaml       # Defines a custom namespace
+├── configmap.yaml       # Stores application configuration
+├── deployment.yaml      # Deploys the app with replicas
+└── service.yaml         # Exposes the app as a service
 docs/
-└── screenshots/             # Output screenshots for verification
+└── screenshots/             # Output screenshots for verification
 ├── pods.png
 ├── services.png
 ├── scale-3-replicas.png
 └── rollout.png
 
-````
+⚙️ Setup & Prerequisites
+1. Install Dependencies
+Install Docker Desktop (with WSL2 backend enabled).
 
----
+Install Minikube → Download here.
 
-## ⚙️ Setup & Prerequisites
+Install kubectl → Download here.
 
-1. **Install Docker Desktop** (with WSL2 backend enabled).
-2. **Install Minikube** → [Download here](https://minikube.sigs.k8s.io/docs/start/).
-3. **Install kubectl** → [Download here](https://kubernetes.io/docs/tasks/tools/).
-4. Verify installs:
-   ```powershell
-   minikube version
-   kubectl version --client
-````
+2. Verify Installations
+minikube version
+kubectl version --client
 
----
-
-## ▶️ Running the Project
-
-### 1️⃣ Start Minikube
-
-```bash
+▶️ Running the Project
+1. Start Minikube
 minikube start --driver=docker
 kubectl get nodes
-```
 
-Expected: 1 node (`minikube`) in **Ready** state.
+Expected: 1 node (minikube) in Ready state.
 
----
-
-### 2️⃣ Create Namespace
-
-```bash
+2. Create Namespace
 kubectl apply -f k8s/namespace.yaml
 kubectl get namespaces
-```
 
----
-
-### 3️⃣ Apply ConfigMap
-
-```bash
+3. Apply ConfigMap
 kubectl apply -f k8s/configmap.yaml
 kubectl get configmaps -n <your-namespace>
-```
 
----
-
-### 4️⃣ Deploy Application
-
-```bash
+4. Deploy Application
 kubectl apply -f k8s/deployment.yaml
 kubectl get pods -n <your-namespace>
-```
 
-📸 Refer to `docs/screenshots/pods.png`
-
----
-
-### 5️⃣ Expose as Service
-
-```bash
+5. Expose as Service
 kubectl apply -f k8s/service.yaml
 kubectl get services -n <your-namespace>
-```
 
-📸 Refer to `docs/screenshots/services.png`
-
----
-
-### 6️⃣ Scale the Deployment
-
-```bash
+6. Scale the Deployment
 kubectl scale deployment my-app --replicas=3 -n <your-namespace>
 kubectl get pods -n <your-namespace>
-```
 
-📸 Refer to `docs/screenshots/scale-3-replicas.png`
+7. Rollout Updates
+Update the image in deployment.yaml, then:
 
----
-
-### 7️⃣ Rollout Updates
-
-Update the image in `deployment.yaml`, then:
-
-```bash
 kubectl apply -f k8s/deployment.yaml
 kubectl rollout status deployment/my-app -n <your-namespace>
-```
 
-📸 Refer to `docs/screenshots/rollout.png`
+📚 Key Learnings
+Setting up Minikube with Docker driver.
 
----
+Organizing Kubernetes manifests (namespace, configmap, deployment, service).
 
-## 📸 Screenshots
+Running deployments, scaling pods, and rolling out updates.
 
-* **pods.png** → Shows pods running in namespace
-* **services.png** → Service exposing the app
-* **scale-3-replicas.png** → Deployment scaled to 3 pods
-* **rollout.png** → Successful rollout after update
+Capturing outputs for documentation.
 
----
+🤝 Contribution
+Fork this repo.
 
-## ✅ Key Learnings
+Create a branch (feature/new-change).
 
-* Setting up Minikube with Docker driver.
-* Organizing Kubernetes manifests (`namespace`, `configmap`, `deployment`, `service`).
-* Running deployments, scaling pods, and rolling out updates.
-* Capturing outputs for documentation.
+Commit your changes.
 
----
+Open a PR into dev.
 
-## 🤝 Contribution
+📌 Summary
+This task provides a hands-on simulation of Kubernetes basics inside Minikube. It mirrors how DevOps engineers deploy, scale, and update applications in real-world clusters.
 
-1. Fork this repo.
-2. Create a branch (`feature/new-change`).
-3. Commit your changes.
-4. Open a PR into `dev`.
-
----
-
-## 📌 Summary
-
-This task provides a **hands-on simulation of Kubernetes basics** inside Minikube.
-It mirrors how DevOps engineers deploy, scale, and update applications in real-world clusters.
-
-```
-
----
-
-⚡ This README is now **internship-review ready** — it’s clean, structured, and professional.  
-
-👉 Do you also want me to **write the YAML files** (`namespace.yaml`, `configmap.yaml`, `deployment.yaml`, `service.yaml`) with best practices so you can directly apply them in your project?
-```
+⚡ This README is now internship-review ready — it’s clean, structured, and professional.
